@@ -35,6 +35,11 @@ app.get('/', (req,res) => {
     res.sendFile(path.join(_dirname, 'public', 'index.html'));
 });
 
+const authRoutes = require('./routes/auth-routes');
+app.use('/auth',authRoutes);
+const userRoutes = require('./routes/user-routes');
+app.use('/user',userRoutes);
+
 app.use('*',(req,res) => {
     res.status(400).json({
         message:'Not found!',
