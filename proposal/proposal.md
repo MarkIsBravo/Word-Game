@@ -31,3 +31,7 @@ There will be a given amount of time for user to build the word by smashing them
 Database:
 * users table: users' info and number of consumables.
 * words table: words completed by users, linked to users table by user_id
+
+## Wordflow
+
+![](Wireframe/workflow.jpg)
