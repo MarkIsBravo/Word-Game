@@ -32,6 +32,6 @@ Database:
 * users table: users' info and number of consumables.
 * words table: words completed by users, linked to users table by user_id
 
-## Wordflow
+## Workflow
 
-![](Wireframe/workflow.jpg)
+![](Wireframe/workflow.png)
