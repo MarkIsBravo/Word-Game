@@ -1,3 +1,5 @@
+\c word_game_dev;
+
 INSERT INTO words
     (spell)
 VALUES
