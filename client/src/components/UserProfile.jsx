@@ -20,7 +20,7 @@ class UserProfile extends Component {
 
     render() {
     return (
-      <div className = 'user-profile'>ha
+      <div className = 'user-profile'>
         <div className = 'user'>
           {this.props.currentUserId === this.props.user.id ?
             <form onSubmit = {this.props.editUser}>
