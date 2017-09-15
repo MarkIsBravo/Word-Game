@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 
 import UserProfile from './UserProfile';
 import WordList from './WordList';
+import Game from './Game';
 
 class DashboardContents extends Component {  
   
@@ -19,6 +20,10 @@ class DashboardContents extends Component {
                                                       user = {this.props.user}
                                                       userWordData = {this.props.userWordData}
                                                       deleteUserWord = {this.props.deleteUserWord}
+                                                    /> : ''}
+        {this.props.currentContent === 'game' ? <Game 
+                                                      user = {this.props.user}
+                                                      userWordData = {this.props.userWordData}
                                                     /> : ''}
       </div>
     )
