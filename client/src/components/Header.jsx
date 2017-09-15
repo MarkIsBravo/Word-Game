@@ -6,11 +6,9 @@ const Header = (props) => {
         <header>
             <div className = 'header'>
                 <h2>Word Game</h2>
-                {/* <h4>{this.props.user.username}</h4> */}
-                <ul>
-                    {props.auth ? <li className = 'username'>{props.user.username}</li> : '' }
-                    {props.auth ? <li onClick = {props.logOut}><Link to = '/'>Logout</Link></li> : '' }
-                </ul>
+                {props.auth ? <h4>{props.user.nickname}</h4> : ''}
+                {props.auth ? <div className = 'username'>{props.user.username}</div> : '' }
+                {props.auth ? <div className = 'logout-btn' onClick = {props.logOut}><Link to = '/'>Logout</Link></div> : '' }
             </div>
         </header>
     )
