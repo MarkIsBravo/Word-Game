@@ -28,7 +28,7 @@ class UserProfile extends Component {
               <input type = 'text' name = 'email' placeholder = 'email' value = {this.state.email} onChange = {this.handleInputChange} />
               <button type = 'submit'>Submit</button>
             </form> 
-            : <h2><span>nickname</span>{this.props.user.nickname} <span>email</span>{this.props.user.email}</h2> }
+            : <h2><span>Nickname: </span>{this.props.user.nickname} <span>Email: </span>{this.props.user.email}</h2> }
         </div>
         <div className='user-buttons'>
           <div className='edit-button' onClick={()=> {this.props.userSelectEdit(this.props.user.id)}}><p>Edit Profile?</p>

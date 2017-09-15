@@ -11,12 +11,12 @@ class Dashboard extends Component {
                 {this.props.auth ? this.props.currentPage == 'dashboard' ? 
                 <div className = 'dashboard-home'>
                     <h4>Welcome, {this.props.user.nickname} </h4> 
-                    <div className = 'user-btn' onClick = {() => this.props.setPage('join') & this.props.setContent('join')}>join</div>
+                    <div className = 'user-btn' onClick = {() => this.props.setPage('game') & this.props.setContent('game')}>game</div>
                     <div className = 'user-btn' onClick = {() => this.props.setPage('profile') & this.props.setContent('profile')}>profile</div>
                     <div className = 'user-btn' onClick = {() => this.props.setPage('wordlist') & this.props.setContent('wordlist')}>wordlist</div>
-                    <div className = 'user-btn' onClick = {() => this.props.setPage('characters') & this.props.setContent('characters')}>characters</div>
-                    <div className = 'user-btn' onClick = {() => this.props.setPage('store') & this.props.setContent('store')}>store</div>
-                    <div className = 'user-btn' onClick = {() => this.props.setPage('leaderboard') & this.props.setContent('leaderboard')}>leaderboard</div>
+                    <div className = 'user-btn' onClick = {() => this.props.setPage('characters') & this.props.setContent('characters')}>characters(later)</div>
+                    <div className = 'user-btn' onClick = {() => this.props.setPage('store') & this.props.setContent('store')}>store(later)</div>
+                    <div className = 'user-btn' onClick = {() => this.props.setPage('leaderboard') & this.props.setContent('leaderboard')}>leaderboard(later)</div>
                 </div> :
                 <div className = 'dashboard-expand'>
                     <DashboardNav setContent = {this.props.setContent} currentContent = {this.props.currentContent}/>
