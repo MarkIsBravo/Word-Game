@@ -113,7 +113,7 @@ class App extends Component {
       return (
         <Router>
           <div className="App">
-            <Header />
+            <Header user = {this.state.user} auth = {this.state.auth} logOut = {this.logOut} />
             <main>
               <Route exact path = '/' render = {() => <Home handleLoginSubmit = {this.handleLoginSubmit}/>} />
               <Route exact path = '/register' render = {() => <Register handleRegisterSubmit = {this.handleRegisterSubmit} />} />
