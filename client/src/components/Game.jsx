@@ -8,8 +8,6 @@ class Game extends Component {
             newWordData: null,
             unspelled: ['W', 'O', 'R', 'D', 'D', 'D', 'D'],
             spelled: [],
-            completed: false,
-            letter: 'W',
             letterList: [ 'A','B','C','D','E','F','G','H','I','J','K','L','M','N','O','P','Q','R','S','T','U','V','W','X','Y','Z' ],
         }
         this.getNewWord = this.getNewWord.bind(this);
@@ -102,15 +100,16 @@ class Game extends Component {
                 </div>
                 {[...this.state.unspelled].length === 0 ? this.saveNewWord() : ''}
                 <div className = 'test-btn' onClick = {this.getNewWord}>Get New Word</div>
-                <div className = 'test-btn' onClick = {this.saveNewWord}>Save This Word</div>
                 <hr />
-                {[...this.state.letterList].map(letterBox => {
-                    return <div className = 'test-btn' onClick = {() => {this.spellWord(letterBox)}}>{letterBox}</div>
-                })}
-                {this.state.unspelled.length ? 
-                    [...this.state.unspelled].map(letterBox => {
-                    return <div className = 'test-btn' onClick = {() => {this.spellWord(letterBox)}}>{letterBox}</div>
-                }) : ''}
+                <div className = 'letter-boxes'>
+                    {[...this.state.letterList].map(letterBox => {
+                        return <div className = 'test-btn' onClick = {() => {this.spellWord(letterBox)}}>{letterBox}</div>
+                    })}
+                    {this.state.unspelled.length ? 
+                        [...this.state.unspelled].map(letterBox => {
+                        return <div className = 'test-btn' onClick = {() => {this.spellWord(letterBox)}}>{letterBox}</div>
+                    }) : ''}
+                </div>
             </div>
         )
     }
