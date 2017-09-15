@@ -188,6 +188,7 @@ class App extends Component {
         <Router>
           <div className="App">
             <Header user = {this.state.user} auth = {this.state.auth} logOut = {this.logOut} />
+            <hr />
             <main>
               <Route exact path = '/' render = {() => <Home handleLoginSubmit = {this.handleLoginSubmit}/>} />
               <Route exact path = '/register' render = {() => <Register handleRegisterSubmit = {this.handleRegisterSubmit} />} />
@@ -205,6 +206,7 @@ class App extends Component {
                                                             
                                                              />} />
             </main>
+            <hr />
             <Footer />
           </div>
         </Router>

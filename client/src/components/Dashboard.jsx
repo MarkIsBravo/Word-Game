@@ -5,6 +5,26 @@ import DashboardNav from './DashboardNav';
 import DashboardContent from './DashboardContent';
 
 class Dashboard extends Component {
+    constructor(){
+        super();
+        this.state = {
+            userWordData: null,
+        }
+    }
+
+    componentDidMount(){
+        axios.get('/usersword')
+        .then(res => {
+            console.log(res.data)
+            this.setState({
+                userWordData: res.data,
+            })
+        })
+        .catch(err => {
+            console.log(err);
+        })
+    }
+
     render(){
         return (
             <div className = 'dashboard'>
@@ -20,13 +40,16 @@ class Dashboard extends Component {
                 </div> :
                 <div className = 'dashboard-expand'>
                     <DashboardNav setContent = {this.props.setContent} currentContent = {this.props.currentContent}/>
+                    <hr />
                     <DashboardContent 
                         userSelectEdit = {this.props.userSelectEdit}
                         editUser = {this.props.editUser}
                         deleteUser = {this.props.deleteUser}
                         currentContent = {this.props.currentContent}
                         currentUserId = {this.props.currentUserId}
-                        user = {this.props.user} />
+                        user = {this.props.user}
+                        userWordData = {this.state.userWordData}
+                         />
                 </div>
                 : ''}
             </div>

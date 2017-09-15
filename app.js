@@ -39,6 +39,8 @@ const authRoutes = require('./routes/auth-routes');
 app.use('/auth',authRoutes);
 const userRoutes = require('./routes/user-routes');
 app.use('/user',userRoutes);
+const usersWordRoutes = require('./routes/usersword-routes');
+app.use('/usersword', usersWordRoutes);
 
 app.use('*',(req,res) => {
     res.status(400).json({
