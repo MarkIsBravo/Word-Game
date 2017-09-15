@@ -18,7 +18,7 @@ authRouter.get('/logout', (req, res) => {
     res.json({
         message: 'logged out',
         auth: false,
-    })
+    });
 });
 //login success route
 authRouter.get('/success', (req, res) => {
