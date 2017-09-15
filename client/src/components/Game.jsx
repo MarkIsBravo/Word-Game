@@ -8,10 +8,11 @@ class Game extends Component {
             newWordData: null,
         }
         this.getNewWord = this.getNewWord.bind(this);
+        this.saveNewWord = this.saveNewWord.bind(this);
     }
 
     getNewWord = () => {
-        console.log('get new word...')
+        console.log('get new word...');
         axios.get('/word/new')
         .then(res => {
             console.log(res.data);
@@ -24,6 +25,19 @@ class Game extends Component {
         })
     }
 
+    saveNewWord = () =>{
+        console.log('save new word...');
+        axios.post('/usersword/new', {
+            spell: this.state.newWordData[0].spell
+        })
+        .then(res => {
+            this.props.userWordData.push(this.state.newWordData[0])
+        })
+        .catch(err => {
+            console.log(err);
+        })
+    }
+
     render(){
         return(
             <div className = 'game-room'>
@@ -33,6 +47,7 @@ class Game extends Component {
                     : ''}
                 </div>
                 <div className = 'test-btn' onClick = {this.getNewWord}>Get New Word</div>
+                <div className = 'test-btn' onClick = {this.saveNewWord}>Save This Word</div>
             </div>
         )
     }

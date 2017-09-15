@@ -7,4 +7,6 @@ usersWordRoutes.get('/', authHelpers.loginRequired,usersWordsController.findUser
 
 usersWordRoutes.delete('/:id', authHelpers.loginRequired, usersWordsController.delete);
 
+usersWordRoutes.post('/new', authHelpers.loginRequired, usersWordsController.addToUser);
+
 module.exports = usersWordRoutes;
