@@ -29,6 +29,7 @@ class WordList extends Component {
                     this.props.userWordData.map(word => {
                         return  <div className = 'word-single' key = {word.id}>
                                     {word.spell}
+                                    <div key = {word.id} onClick = {() => {this.props.deleteUserWord(word.id)}}>delete</div>
                                 </div>
                     })
                     : <h4>Your word list is empty...</h4>}

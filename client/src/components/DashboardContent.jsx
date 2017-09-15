@@ -18,6 +18,7 @@ class DashboardContents extends Component {
         {this.props.currentContent === 'wordlist' ? <WordList 
                                                       user = {this.props.user}
                                                       userWordData = {this.props.userWordData}
+                                                      deleteUserWord = {this.props.deleteUserWord}
                                                     /> : ''}
       </div>
     )

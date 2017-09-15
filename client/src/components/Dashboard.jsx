@@ -10,6 +10,7 @@ class Dashboard extends Component {
         this.state = {
             userWordData: null,
         }
+        this.deleteUserWord = this.deleteUserWord.bind(this);
     }
 
     componentDidMount(){
@@ -22,8 +23,34 @@ class Dashboard extends Component {
         })
         .catch(err => {
             console.log(err);
-        })
-    }
+        });
+    };
+
+    deleteUserWord = id =>{
+        let confirm = window.confirm(`${this.props.user.nickname}, are you sure you want to delete this word?`);
+        if(confirm === true) {
+            axios.delete(`/usersword/${id}`)
+            .then(res => {
+                const updatedWords = [...this.state.userWordData];
+                let deletedIndex;
+
+                updatedWords.forEach((word, index) => {
+                    if (word.id === id) {
+                        deletedIndex = index;
+                    };
+                });
+
+                updatedWords.splice(deletedIndex, 1);
+
+                this.setState({
+                    userWordData: updatedWords,
+                });
+            })
+            .catch(err => {
+                console.log(err);
+            });
+        };
+    };
 
     render(){
         return (
@@ -49,6 +76,7 @@ class Dashboard extends Component {
                         currentUserId = {this.props.currentUserId}
                         user = {this.props.user}
                         userWordData = {this.state.userWordData}
+                        deleteUserWord = {this.deleteUserWord}
                          />
                 </div>
                 : ''}
