@@ -3,6 +3,9 @@ import React, { Component } from 'react';
 import UserProfile from './UserProfile';
 import WordList from './WordList';
 import Game from './Game';
+import CharacterList from './CharacterList';
+import Store from './Store';
+import Leaderboard from './Leaderboard';
 
 class DashboardContents extends Component {  
   
@@ -24,6 +27,15 @@ class DashboardContents extends Component {
         {this.props.currentContent === 'game' ? <Game 
                                                       user = {this.props.user}
                                                       userWordData = {this.props.userWordData}
+                                                    /> : ''}
+        {this.props.currentContent === 'characters' ? <CharacterList
+                                                      user = {this.props.user} 
+                                                    /> : ''}
+        {this.props.currentContent === 'store' ? <Store 
+                                                      user = {this.props.user}
+                                                    /> : ''}
+        {this.props.currentContent === 'leaderboard' ? <Leaderboard 
+                                                      user = {this.props.user}
                                                     /> : ''}
       </div>
     )
