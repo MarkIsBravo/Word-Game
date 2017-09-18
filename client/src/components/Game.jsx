@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import axios from 'axios';
 
+import GameStage from './GameStage';
+
 class Game extends Component {
     constructor() {
         super();
@@ -110,6 +112,8 @@ class Game extends Component {
                         return <div className = 'test-btn' onClick = {() => {this.spellWord(letterBox)}}>{letterBox}</div>
                     }) : ''}
                 </div>
+                <hr />
+                <GameStage />
             </div>
         )
     }
