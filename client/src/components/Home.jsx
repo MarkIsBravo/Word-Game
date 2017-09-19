@@ -5,7 +5,7 @@ import Login from './Login';
 const Home = (props) => {
     return (
         <div className = 'home'>
-            <h1>Welcome to the Word Game</h1>
+            <h1>Welcome to Word Hero</h1>
             <ul>
                 <li><Login handleLoginSubmit = {props.handleLoginSubmit} /></li>
                 <li>New user? <Link to ='/register'>Register here</Link></li>
