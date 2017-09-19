@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import axios from 'axios';
 
 import GameStage from './GameStage';
-import GameTest from './GameTest';
 
 class Game extends Component {
     constructor() {
@@ -142,7 +141,7 @@ class Game extends Component {
                 </div>
                 <hr />
                 {/* <GameStage letterList = {this.state.letterList} unspelled = {this.state.unspelled}/> */}
-                <GameTest   letterList = {this.state.letterList} 
+                <GameStage   letterList = {this.state.letterList} 
                             unspelled = {this.state.unspelled} 
                             spelled = {this.state.spelled} 
                             tryToSave = {this.tryToSave} 
