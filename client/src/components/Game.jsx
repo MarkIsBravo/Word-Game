@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import axios from 'axios';
 
 import GameStage from './GameStage';
+import GameTest from './GameTest';
 
 class Game extends Component {
     constructor() {
@@ -16,6 +17,10 @@ class Game extends Component {
         this.saveNewWord = this.saveNewWord.bind(this);
         this.spellWord = this.spellWord.bind(this);
     };
+
+    componentDidMount(){
+        this.getNewWord();
+    }
 
     getNewWord = () => {
         console.log('get new word...');
@@ -113,7 +118,8 @@ class Game extends Component {
                     }) : ''}
                 </div>
                 <hr />
-                <GameStage letterList = {this.state.letterList} unspelled = {this.state.unspelled}/>
+                {/* <GameStage letterList = {this.state.letterList} unspelled = {this.state.unspelled}/> */}
+                <GameTest letterList = {this.state.letterList} unspelled = {this.state.unspelled} />
             </div>
         )
     }
