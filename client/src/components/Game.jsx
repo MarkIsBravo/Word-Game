@@ -113,7 +113,7 @@ class Game extends Component {
                     }) : ''}
                 </div>
                 <hr />
-                <GameStage />
+                <GameStage letterList = {this.state.letterList} unspelled = {this.state.unspelled}/>
             </div>
         )
     }
