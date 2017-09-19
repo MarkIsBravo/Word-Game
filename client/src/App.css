@@ -79,3 +79,16 @@
     left: -50px;
   }
 }
+
+.hp-bar{
+  height: 20px;
+  width: 100px;
+  display: flex;
+}
+
+.hp-dot{
+  height: 20px;
+  width: 20px;
+  margin: 0 10px;
+  background-color: red;
+}

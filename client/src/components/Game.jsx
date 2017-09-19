@@ -12,10 +12,10 @@ class Game extends Component {
             unspelled: ['W', 'O', 'R', 'D', 'D', 'D', 'D'],
             spelled: [],
             letterList: [ 'A','B','C','D','E','F','G','H','I','J','K','L','M','N','O','P','Q','R','S','T','U','V','W','X','Y','Z' ],
+            HP: [1,1,1],
         }
         this.getNewWord = this.getNewWord.bind(this);
         this.saveNewWord = this.saveNewWord.bind(this);
-        this.spellWord = this.spellWord.bind(this);
     };
 
     componentDidMount(){
@@ -37,6 +37,29 @@ class Game extends Component {
             console.log(err)
         });
     };
+
+    tryToSave=()=>{
+        let shiftLetter = function(arr){
+                arr.shift();
+                return arr;
+            }
+        this.setState({
+            spelled: this.state.spelled.concat(this.state.unspelled[0]),
+            unspelled: shiftLetter([...this.state.unspelled]),
+        })
+        console.log('good job!')
+    }
+
+    wrongLetter = () => {
+        let popHealth = function(arr){
+            arr.pop();
+            return arr;
+        }
+        this.setState({
+            HP: popHealth([...this.state.HP])
+        })
+        console.log('whoops, wrong letter')
+    }
 
     saveNewWord = () =>{
         let words = this.props.userWordData.map(word => {
@@ -65,7 +88,7 @@ class Game extends Component {
         }
     };
 
-    spellWord = (letterBox) => {
+    // spellWord = (letterBox) => {
         // this.setState({
         //     letter: 'W',
         // })
@@ -76,19 +99,19 @@ class Game extends Component {
         //         unspelled: this.state.unspelled.shift(),
         //     })},1)
         // }
-        if (letterBox === this.state.unspelled[0]){
-            let shiftLetter = function(arr){
-                arr.shift();
-                return arr
-            }
-            this.setState({
-                spelled: this.state.spelled.concat(this.state.unspelled[0]),
-                unspelled: shiftLetter([...this.state.unspelled]),
-            })
-        } else {
-            console.log('whoops, wrong letter')
-        }
-    };
+    //     if (letterBox === this.state.unspelled[0]){
+    //         let shiftLetter = function(arr){
+    //             arr.shift();
+    //             return arr
+    //         }
+    //         this.setState({
+    //             spelled: this.state.spelled.concat(this.state.unspelled[0]),
+    //             unspelled: shiftLetter([...this.state.unspelled]),
+    //         })
+    //     } else {
+    //         console.log('whoops, wrong letter')
+    //     }
+    // };
 
     render(){
         return(
@@ -119,7 +142,14 @@ class Game extends Component {
                 </div>
                 <hr />
                 {/* <GameStage letterList = {this.state.letterList} unspelled = {this.state.unspelled}/> */}
-                <GameTest letterList = {this.state.letterList} unspelled = {this.state.unspelled} />
+                <GameTest   letterList = {this.state.letterList} 
+                            unspelled = {this.state.unspelled} 
+                            spelled = {this.state.spelled} 
+                            tryToSave = {this.tryToSave} 
+                            HP = {this.state.HP}
+                            wrongLetter = {this.wrongLetter}
+                            newWordData = {this.state.newWordData}
+                            />
             </div>
         )
     }
