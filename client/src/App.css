@@ -31,7 +31,7 @@
 
 #sky{
   height: 250px;
-  width: 800px;
+  width: 100%;
   background-color: #00F7FF;
   position: relative;
 }
@@ -58,7 +58,7 @@
 
 #ground{
   height:50px;
-  width: 800px;
+  width: 100%;
   background-color: yellow;
 }
 
@@ -73,7 +73,7 @@
 
 @keyframes boxMove {
   0%{
-    left: 800px;
+    left: 100%;
   }
   100%{
     left: -50px;

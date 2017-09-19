@@ -34,13 +34,13 @@ class GameStage extends Component {
         this.createBoxes();
         this.collisionDetect();
     }
-    componentWillUnmount(){
-        let gameStage = document.getElementById('game-stage');
-        let sky = document.getElementById('sky');
-        let ground = document.getElementById('ground');
-        gameStage.removeChild(sky);
-        gameStage.removeChild(ground);
-    }
+    // componentWillUnmount(){
+    //     let gameStage = document.getElementById('game-stage');
+    //     let sky = document.getElementById('sky');
+    //     let ground = document.getElementById('ground');
+    //     gameStage.removeChild(sky);
+    //     gameStage.removeChild(ground);
+    // }
     createBoxes = () => {
         let letterList = [...this.props.letterList];
         let sky = document.getElementById('sky');
