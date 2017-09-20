@@ -5,7 +5,8 @@ CREATE TABLE IF NOT EXISTS users (
     username VARCHAR(255) UNIQUE NOT NULL,
     password_digest TEXT NOT NULL,
     nickname VARCHAR(255) NOT NULL,
-    email VARCHAR(255)
+    email VARCHAR(255),
+    currency INTEGER
 );
 
 CREATE TABLE IF NOT EXISTS words (

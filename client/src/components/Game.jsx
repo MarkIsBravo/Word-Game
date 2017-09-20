@@ -10,18 +10,37 @@ class Game extends Component {
             newWordData: null,
             unspelled: ['W', 'O', 'R', 'D', 'D', 'D', 'D'],
             spelled: [],
-            letterList: [ 'A','B','C','D','E','F','G','H','I','J','K','L','M','N','O','P','Q','R','S','T','U','V','W','X','Y','Z' ],
+            // letterList: [ 'A','B','C','D','E','F','G','H','I','J','K','L','M','N','O','P','Q','R','S','T','U','V','W','X','Y','Z' ],
             HP: [1,1,1],
+            dudeAnimation: '',
+            letters: [],
+            started: false,
+            isMounted: true,
+            combo: 0,
         }
         this.getNewWord = this.getNewWord.bind(this);
+        this.tryToSave = this.tryToSave.bind(this);
+        this.wrongLetter = this.wrongLetter.bind(this);
         this.saveNewWord = this.saveNewWord.bind(this);
+        this.createBoxes = this.createBoxes.bind(this);
+        this.changeDisplay = this.changeDisplay.bind(this);
+        this.dudeJump = this.dudeJump.bind(this);
+        this.deleteAnimation = this.deleteAnimation.bind(this);
+        this.collisionDetect = this.collisionDetect.bind(this);
+        this.createManyBoxes = this.createManyBoxes.bind(this);
     };
 
     componentDidMount(){
         this.getNewWord();
     }
 
-    getNewWord = () => {
+    componentWillUnmount(){
+        this.setState({
+            started: false
+        })
+    }
+
+    getNewWord(){
         console.log('get new word...');
         axios.get('/word/new')
         .then(res => {
@@ -37,19 +56,23 @@ class Game extends Component {
         });
     };
 
-    tryToSave=()=>{
+    tryToSave(){
         let shiftLetter = function(arr){
                 arr.shift();
                 return arr;
             }
-        this.setState({
-            spelled: this.state.spelled.concat(this.state.unspelled[0]),
-            unspelled: shiftLetter([...this.state.unspelled]),
-        })
+            this.setState({
+                spelled: this.state.spelled.concat(this.state.unspelled[0]),
+                unspelled: shiftLetter([...this.state.unspelled]),
+            })
+        this.props.addCurrency(1);
         console.log('good job!')
+        if([...this.state.unspelled].length === 0){
+            this.saveNewWord();
+        }
     }
 
-    wrongLetter = () => {
+    wrongLetter(){
         let popHealth = function(arr){
             arr.pop();
             return arr;
@@ -60,11 +83,14 @@ class Game extends Component {
         console.log('whoops, wrong letter')
     }
 
-    saveNewWord = () =>{
+    saveNewWord(){
         let words = this.props.userWordData.map(word => {
             return word.spell;
         });
         if (this.state.newWordData){
+            this.setState({
+                combo: this.state.combo + 1,
+            })
             if(!words.includes(this.state.newWordData[0].spell)){
                 console.log('Saving this word...');
                 axios.post('/usersword/new', {
@@ -83,6 +109,9 @@ class Game extends Component {
                 });
             }else{
                 console.log('This word exists already...')
+                this.setState({
+                    newWordData: null,
+                });
             };
         }
     };
@@ -112,10 +141,60 @@ class Game extends Component {
     //     }
     // };
 
+    createBoxes(){
+            if (this.state.newWordData){
+                let letterList = this.state.newWordData[0].spell.toUpperCase().split('');
+                this.setState({
+                letters: this.state.letters.concat(letterList[Math.floor(Math.random()*letterList.length)]),
+                })
+            }else{
+                this.getNewWord()
+            }
+    }
+    createManyBoxes(){
+        setInterval(this.createBoxes,2000)
+    }
+    changeDisplay(){
+        this.setState({
+            started: true,
+        })
+    }
+    dudeJump(){
+        this.setState({
+            dudeAnimation: 'jump 0.6s 2 alternate'
+        })
+    }
+    deleteAnimation(){
+        this.setState({
+            dudeAnimation: ''
+        })
+    }
+
+    collisionDetect(){
+        let dude = document.getElementById('dude');
+        let box = document.getElementsByClassName('box');
+        let sky = document.getElementById('sky');
+
+        [...box].forEach(a=>{
+            let distance = Math.sqrt(Math.pow((a.offsetLeft - dude.offsetLeft),2) + Math.pow((a.offsetTop - dude.offsetTop),2));
+            if (a.offsetLeft < -49){
+                sky.removeChild(a)
+            }
+            if (distance < 50){
+                sky.removeChild(a);
+                if(a.innerHTML === this.state.unspelled[0]){
+                    this.tryToSave()
+                }else{
+                    this.wrongLetter()
+                }
+            }
+        })
+    }
+
     render(){
         return(
             <div className = 'game-room'>
-                <div className = 'word-box'>
+                {/* <div className = 'word-box'>
                     {this.state.spelled.length ? 
                         [...this.state.spelled].map(letter =>{
                             return <b>{letter}</b>
@@ -126,28 +205,29 @@ class Game extends Component {
                             return <small>{letter}</small>
                         })
                         : ''}
-                </div>
-                {[...this.state.unspelled].length === 0 ? this.saveNewWord() : ''}
+                </div> */}
+                {/* {[...this.state.unspelled].length === 0 ? this.saveNewWord() : ''} */}
                 <div className = 'test-btn' onClick = {this.getNewWord}>Get New Word</div>
                 <hr />
-                <div className = 'letter-boxes'>
-                    {[...this.state.letterList].map(letterBox => {
-                        return <div className = 'test-btn' onClick = {() => {this.spellWord(letterBox)}}>{letterBox}</div>
-                    })}
-                    {this.state.unspelled.length ? 
-                        [...this.state.unspelled].map(letterBox => {
-                        return <div className = 'test-btn' onClick = {() => {this.spellWord(letterBox)}}>{letterBox}</div>
-                    }) : ''}
-                </div>
-                <hr />
-                {/* <GameStage letterList = {this.state.letterList} unspelled = {this.state.unspelled}/> */}
-                <GameStage   letterList = {this.state.letterList} 
+                <GameStage  
                             unspelled = {this.state.unspelled} 
                             spelled = {this.state.spelled} 
                             tryToSave = {this.tryToSave} 
                             HP = {this.state.HP}
                             wrongLetter = {this.wrongLetter}
                             newWordData = {this.state.newWordData}
+                            user= {this.props.user}
+                            currency = {this.props.currency}
+                            createBoxes = {this.createBoxes}
+                            changeDisplay = {this.changeDisplay}
+                            dudeJump = {this.dudeJump}
+                            deleteAnimation = {this.deleteAnimation}
+                            collisionDetect = {this.collisionDetect}
+                            createManyBoxes = {this.createManyBoxes}
+                            dudeAnimation = {this.state.dudeAnimation}
+                            letters = {this.state.letters}
+                            started = {this.state.started}
+                            combo = {this.state.combo}
                             />
             </div>
         )

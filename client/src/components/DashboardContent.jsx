@@ -27,6 +27,8 @@ class DashboardContents extends Component {
         {this.props.currentContent === 'game' ? <Game 
                                                       user = {this.props.user}
                                                       userWordData = {this.props.userWordData}
+                                                      currency = {this.props.currency}
+                                                      addCurrency = {this.props.addCurrency}
                                                     /> : ''}
         {this.props.currentContent === 'characters' ? <CharacterList
                                                       user = {this.props.user} 

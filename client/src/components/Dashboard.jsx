@@ -55,7 +55,7 @@ class Dashboard extends Component {
     render(){
         return (
             <div className = 'dashboard'>
-                {this.props.auth ? this.props.currentPage == 'dashboard' ? 
+                {this.props.auth ? this.props.currentPage === 'dashboard' ? 
                 <div className = 'dashboard-home'>
                     <h4>Welcome, {this.props.user.nickname} </h4> 
                     <div className = 'user-btn' onClick = {() => this.props.setPage('game') & this.props.setContent('game')}>game</div>
@@ -77,6 +77,8 @@ class Dashboard extends Component {
                         user = {this.props.user}
                         userWordData = {this.state.userWordData}
                         deleteUserWord = {this.deleteUserWord}
+                        currency = {this.props.currency}
+                        addCurrency = {this.props.addCurrency}
                          />
                 </div>
                 : ''}

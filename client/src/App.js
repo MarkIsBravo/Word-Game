@@ -23,6 +23,7 @@ class App extends Component {
       currentPage: 'dashboard',
       currentContent: 'dashboard',
       redirect: '/',
+      currency: null,
     }
     this.handleLoginSubmit = this.handleLoginSubmit.bind(this);
     this.handleRegisterSubmit = this.handleRegisterSubmit.bind(this);
@@ -32,9 +33,10 @@ class App extends Component {
     this.deleteUser = this.deleteUser.bind(this);
     this.setContent = this.setContent.bind(this);
     this.setPage = this.setPage.bind(this);
+    this.addCurrency = this.addCurrency.bind(this);
   }
 
-  requireLogin = () => {
+  requireLogin(){
     if(!this.state.auth) {
       this.setState({
         redirect: '/login',
@@ -56,6 +58,7 @@ class App extends Component {
       this.setState({
         auth: res.data.auth,
         user: res.data.user,
+        currency: res.data.user.currency,
       });
     })
     .then(() => {
@@ -70,7 +73,7 @@ class App extends Component {
     })
   };
 
-  handleRegisterSubmit = (e, username, password, nickname, email) => {
+  handleRegisterSubmit(e, username, password, nickname, email){
     e.preventDefault();
     axios.post('/auth/register', {
       username,
@@ -111,7 +114,7 @@ class App extends Component {
     })
   };
 
-  editUser = (e) => {
+  editUser(e){
     e.preventDefault();
     let nickname = e.target.nickname.value;
     let email = e.target.email.value;
@@ -132,13 +135,13 @@ class App extends Component {
     })
   };
 
-  userSelectEdit = (id) => {
+  userSelectEdit(id){
     this.setState({
       currentUserId: id,
     })
   }
 
-  deleteUser = (id) => {
+  deleteUser(id){
     let confirm = window.confirm(`Are you sure you want to delete your profile ${this.state.user.username}?`);
     if(confirm === false) {
       this.setState({
@@ -160,17 +163,23 @@ class App extends Component {
     }
   };
 
-  setContent = (content) => {
+  setContent(content){
     this.setState({
       currentContent: content,
     });
   };
 
-  setPage = (page) => {
+  setPage(page){
     this.setState({
       currentPage: page
     });
   };
+
+  addCurrency(times){
+    this.setState({
+      currency: this.state.currency + 1 * times
+    })
+  }
 
   render() {
     if(this.state.redirect !== null) {
@@ -203,7 +212,8 @@ class App extends Component {
                                                             setPage = {this.setPage}
                                                             currentPage = {this.state.currentPage}
                                                             currentUserId = {this.state.currentUserId}
-                                                            
+                                                            currency = {this.state.currency}
+                                                            addCurrency = {this.addCurrency}
                                                              />} />
             </main>
             <hr />
