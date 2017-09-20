@@ -35,9 +35,11 @@ class Game extends Component {
     }
 
     componentWillUnmount(){
+        console.log('unmount');
         this.setState({
             started: false
         })
+        clearInterval(this.myInterval);
     }
 
     getNewWord(){
@@ -180,7 +182,7 @@ class Game extends Component {
             }
     }
     createManyBoxes(){
-        setInterval(this.createBoxes,2000)
+        this.myInterval = setInterval(this.createBoxes,2000)
     }
     changeDisplay(){
         this.setState({
