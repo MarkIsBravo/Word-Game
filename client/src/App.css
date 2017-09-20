@@ -398,3 +398,13 @@ input:hover{
   align-items: center;
   justify-content: center;
 }
+
+.leaderboard{
+  height: 68vh;
+}
+.store{
+  height: 68vh;
+}
+.characterlist{
+  height:68vh;
+}
