@@ -1,4 +1,4 @@
-\c word_game_dev;
+-- \c word_game_dev;
 
 INSERT INTO words
     (spell)

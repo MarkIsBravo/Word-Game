@@ -1,4 +1,4 @@
-\c word_game_dev;
+-- \c word_game_dev;
 
 CREATE TABLE IF NOT EXISTS users (
     id SERIAL PRIMARY KEY,
