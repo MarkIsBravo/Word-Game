@@ -57,17 +57,16 @@ class Dashboard extends Component {
             <div className = 'dashboard'>
                 {this.props.auth ? this.props.currentPage === 'dashboard' ? 
                 <div className = 'dashboard-home'>
-                    <h4>Welcome, {this.props.user.nickname} </h4> 
-                    <div className = 'user-btn' onClick = {() => this.props.setPage('game') & this.props.setContent('game')}>game</div>
-                    <div className = 'user-btn' onClick = {() => this.props.setPage('profile') & this.props.setContent('profile')}>profile</div>
-                    <div className = 'user-btn' onClick = {() => this.props.setPage('wordlist') & this.props.setContent('wordlist')}>wordlist</div>
-                    <div className = 'user-btn' onClick = {() => this.props.setPage('characters') & this.props.setContent('characters')}>characters(later)</div>
-                    <div className = 'user-btn' onClick = {() => this.props.setPage('store') & this.props.setContent('store')}>store(later)</div>
-                    <div className = 'user-btn' onClick = {() => this.props.setPage('leaderboard') & this.props.setContent('leaderboard')}>leaderboard(later)</div>
+                    <h4>Dashboard</h4> 
+                    <div className = 'user-btn' onClick = {() => this.props.setPage('game') & this.props.setContent('game')}>Game</div>
+                    <div className = 'user-btn' onClick = {() => this.props.setPage('profile') & this.props.setContent('profile')}>Profile</div>
+                    <div className = 'user-btn' onClick = {() => this.props.setPage('wordlist') & this.props.setContent('wordlist')}>Wordlist</div>
+                    <div className = 'user-btn' onClick = {() => this.props.setPage('characters') & this.props.setContent('characters')}>Characters(later)</div>
+                    <div className = 'user-btn' onClick = {() => this.props.setPage('store') & this.props.setContent('store')}>Store(later)</div>
+                    <div className = 'user-btn' onClick = {() => this.props.setPage('leaderboard') & this.props.setContent('leaderboard')}>Leaderboard(later)</div>
                 </div> :
                 <div className = 'dashboard-expand'>
                     <DashboardNav setContent = {this.props.setContent} currentContent = {this.props.currentContent}/>
-                    <hr />
                     <DashboardContent 
                         userSelectEdit = {this.props.userSelectEdit}
                         editUser = {this.props.editUser}

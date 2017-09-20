@@ -23,11 +23,236 @@
   to { transform: rotate(360deg); }
 }
 
+body{
+  font-family: 'Muli', sans-serif;
+}
+
+.home{
+  height: 55vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-around;
+  padding: 15vh 0;
+  background-color: #FFE364;
+  overflow: scroll;
+}
+
+.home h1{
+  padding: 10px;
+  background-color: #F5A235;
+  border-style: dashed;
+}
+
+.home div{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #F5A235;
+}
+
+.login{
+  border-style: dashed;
+  width: 240px;
+  padding: 20px;
+}
+
+.login button{
+  height: 30px;
+  width: 210px;
+  background-color: #FFE364;
+  border: dotted black;
+  cursor: pointer;
+}
+
+.login button:hover{
+  background-color: #D3CFBF;
+}
+
+.register-link{
+  padding: 10px;
+  border: 3px dashed black;
+}
+
+input{
+  margin: 5px;
+  height: 30px;
+  width: 200px;
+}
+
+input:hover{
+  background-color: #D3CFBF
+}
+
+.header{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 98%;
+  padding: 0 1vw;
+}
+
+.register{
+  height: 55vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-around;
+  padding: 15vh 0;
+  background-color: #FFE364;
+  overflow: scroll;
+}
+
+.register-form{
+  padding: 10px;
+  width: 250px;
+  background-color: #F5A235;
+  border: 3px dashed black;
+}
+.register button{
+  height: 30px;
+  width: 210px;
+  background-color: #FFE364;
+  border: dotted black;
+}
+.register button:hover{
+  background-color: #D3CFBF;
+}
+
+.dashboard{
+  height: 80vh;
+  background-color: #F3DA78;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  font-size: 30px;
+  overflow: scroll;
+}
+
+.dashboard-home{
+  height: 500px;
+  width: 400px;
+  background-color: #778CAC;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.dashboard-home div{
+  height: 50px;
+  width: 300px;
+  background-color: #526280;
+  margin: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+}
+
+.dashboard-home div:hover{
+  background-color: #FC9FB0;
+}
+
 .dashboard-nav{
   display:flex;
-  width: 100%;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 20px;
+  background-color: #778CAC;
+  width: 98vw;
+  padding: 0 1vw;
+  height: 50px;
+  overflow: scroll;
+}
+
+.dashboard-nav div{
+  padding: 10px;
+}
+
+.dashboard-nav div:hover{
+  background: #FC9FB0;
+  cursor: pointer;
+}
+
+.dashboard-expand{
+  overflow: scroll;
+}
+
+.user-profile{
+  height: 73vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
   justify-content: space-around;
 }
+
+.user-profile .user-buttons{
+  display: flex;
+}
+
+.user-profile .user-buttons div{
+  width: 230px;
+  padding: 5px 0;
+  border: dashed #F3DA78;
+  cursor: pointer;
+}
+.user-profile .user-buttons div:hover{
+  border: dashed black;
+}
+.user-profile form{
+  padding: 40px 0;
+  width: 250px;
+}
+.user-profile button{
+  height: 30px;
+  width: 210px;
+  background-color: #F3DA78;
+  border: dotted #F3DA78;
+  cursor: pointer;
+  color: white;
+}
+.user-profile button:hover{
+  border: dotted black;
+}
+
+.wordlist-container{
+  height: 73vh;
+  overflow: scroll;
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+}
+
+.wordlist{
+  display: flex;
+  flex-direction: column;
+  width: 50%;
+}
+
+.word-single{
+  margin: 2px;
+  border: dotted black;
+}
+
+.word-single .delete-btn{
+  background-color: #778CAC;
+  cursor: pointer;
+}
+.word-single .delete-btn:hover{
+  background-color: #FC9FB0;
+}
+
+.game-room{
+  height: 73vh;
+}
+
+
+
+
+
 
 .letter-boxes{
   display: flex;
@@ -36,10 +261,19 @@
 }
 
 #sky{
-  height: 250px;
+  height: 65vh;
   width: 100%;
-  background-color: #00F7FF;
+  background-image: url('images/skyline.png');
+  background-position: 0px 0px;
+  background-size: cover;
+  background-repeat: repeat-x;
   position: relative;
+  animation: backgroundMove 60s linear infinite;
+}
+
+@keyframes backgroundMove{
+  from {background-position: 0 0;}
+  to {background-position: 100% 0;}
 }
 
 #dude{
@@ -48,7 +282,9 @@
   left: 200px;
   height: 50px;
   width: 50px;
-  background-color: red;
+  background-image:url('characters/dude1.gif');
+  background-size: cover;
+  background-position: center;
   /* animation: jump 1s infinite alternate ease; */
 }
 
@@ -57,7 +293,10 @@
   bottom: 0;
   height: 50px;
   width: 50px;
-  background-color: #A58E2A;
+  background-image: url('images/box.jpg');
+  background-size: cover;
+  background-position: center;
+  color: white;
   animation: boxMove 5s 1 forwards linear;
   text-justify: center;
   display: flex;
@@ -68,7 +307,7 @@
 #ground{
   height:50px;
   width: 100%;
-  background-color: yellow;
+  background-color: #9C651C;
 }
 
 @keyframes jump {
@@ -97,31 +336,60 @@
 
 .hp-bar{
   margin: 10px;
-  height: 20px;
-  width: 63px;
+  height: 315px;
+  width: 50px;
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
+  align-items: center;
   background: green;
+  border: 2px solid black;
 }
 
 .hp-dot{
-  height: 20px;
-  width: 20px;
-  margin: 0 1px;
-  background-color: red;
+  height: 100px;
+  width: 45px;
+  margin: 3px 0;
+  background-color: #FF0000;
 }
 
 .word-board{
   margin: 10px;
 }
 
+.word-board .spelled{
+  color: red;
+  font-weight: 700;
+}
+
+.combo{
+  font-size: 20px;
+  width: 120px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-around;
+}
+.combo b{
+  font-family: 'Permanent Marker', cursive;
+  font-size: 35px;
+}
+
 .currency{
   margin: 10px;
 }
 
+/* .start-banner{
+  position: absolute;
+  height: 100px;
+  left: 0;
+  top: 0;
+  width: 100%;
+  background-color: green;
+} */
+
 .lost-banner{
   position: absolute;
-  height: 300px;
+  height: 73vh;
   width: 100%;
   background-color: green;
   color: white;

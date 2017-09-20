@@ -66,6 +66,13 @@ class Game extends Component {
                 unspelled: shiftLetter([...this.state.unspelled]),
             })
         this.props.addCurrency(1);
+        let banner = document.getElementById('banner');
+        if (banner){
+            banner.innerHTML = 'Good job!';
+            setTimeout(function(){
+                banner.innerHTML = ''
+            }, 1000)
+        }
         console.log('good job!')
         if([...this.state.unspelled].length === 0){
             this.saveNewWord();
@@ -80,7 +87,14 @@ class Game extends Component {
         this.setState({
             HP: popHealth([...this.state.HP])
         })
-        console.log('whoops, wrong letter')
+        let banner = document.getElementById('banner');
+        if (banner){
+            banner.innerHTML = 'Whoops, wrong letter';
+            setTimeout(function(){
+                banner.innerHTML = ''
+            }, 1000)
+        }
+        console.log('Whoops, wrong letter...')
     }
 
     saveNewWord(){
@@ -93,6 +107,13 @@ class Game extends Component {
             })
             if(!words.includes(this.state.newWordData[0].spell)){
                 console.log('Saving this word...');
+                let banner = document.getElementById('banner');
+                if (banner){
+                    banner.innerHTML = 'Completed a new word!';
+                    setTimeout(function(){
+                        banner.innerHTML = ''
+                    }, 1000)
+                }
                 axios.post('/usersword/new', {
                     spell: this.state.newWordData[0].spell
                 })
@@ -108,7 +129,14 @@ class Game extends Component {
                     console.log(err);
                 });
             }else{
-                console.log('This word exists already...')
+                console.log('This word exists already...');
+                let banner = document.getElementById('banner');
+                if (banner){
+                    banner.innerHTML = 'Reviewed a word!';
+                    setTimeout(function(){
+                        banner.innerHTML = ''
+                    }, 1000)
+                }
                 this.setState({
                     newWordData: null,
                 });
@@ -207,8 +235,7 @@ class Game extends Component {
                         : ''}
                 </div> */}
                 {/* {[...this.state.unspelled].length === 0 ? this.saveNewWord() : ''} */}
-                <div className = 'test-btn' onClick = {this.getNewWord}>Get New Word</div>
-                <hr />
+                {/* <div className = 'test-btn' onClick = {this.getNewWord}>Get New Word</div> */}
                 <GameStage  
                             unspelled = {this.state.unspelled} 
                             spelled = {this.state.spelled} 

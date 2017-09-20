@@ -25,14 +25,19 @@ class WordList extends Component {
     render(){
         return (
             <div className = 'wordlist-container'>
-                {this.props.userWordData ? 
-                    this.props.userWordData.map(word => {
-                        return  <div className = 'word-single' key = {word.id}>
-                                    {word.spell}
-                                    <div key = {word.id} onClick = {() => {this.props.deleteUserWord(word.id)}}>delete</div>
-                                </div>
-                    })
-                    : <h4>Your word list is empty...</h4>}
+                <div className = 'wordlist'>
+                    {this.props.userWordData ? 
+                        this.props.userWordData.map(word => {
+                            return  <div className = 'word-single' key = {word.id}>
+                                        <div className = 'word'>{word.spell}</div>
+                                        <div className = 'delete-btn' key = {word.id} onClick = {() => {this.props.deleteUserWord(word.id)}}>delete</div>
+                                    </div>
+                        })
+                        : <h4>Your word list is empty...</h4>}
+                </div>
+                <div className = 'word-detail'>
+                    Detail of the words would show up here...
+                </div>
             </div>
         )
     }
