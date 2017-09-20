@@ -391,7 +391,7 @@ input:hover{
   position: absolute;
   height: 73vh;
   width: 100%;
-  background-color: green;
+  background-color: #F3DA78;
   color: white;
   display: flex;
   flex-direction: column;
