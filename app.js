@@ -28,7 +28,7 @@ app.use(express.static('public'));
 
 const PORT = process.env.PORT||3001;
 app.listen(PORT, () => {
-    console.log(`Markymark ${PORT}! Get this shit done!`);
+    console.log(`Markymark ${PORT}! This is gonna be fun!`);
 });
 
 app.get('/', (req,res) => {
