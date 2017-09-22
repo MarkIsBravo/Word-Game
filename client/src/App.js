@@ -179,7 +179,7 @@ class App extends Component {
     this.setState({
       currency: this.state.currency + 1 * times
     });
-    axios.put(`/user/addcoin`, {
+    axios.put(`/user/updatecurrency`, {
       currency: this.state.currency,
       id: this.state.user.id,
     })

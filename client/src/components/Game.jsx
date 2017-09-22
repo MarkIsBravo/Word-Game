@@ -60,14 +60,15 @@ class Game extends Component {
 
     tryToSave(){
         let shiftLetter = function(arr){
-                arr.shift();
-                return arr;
-            }
-            this.setState({
-                spelled: this.state.spelled.concat(this.state.unspelled[0]),
-                unspelled: shiftLetter([...this.state.unspelled]),
-            })
-        this.props.addCurrency(1);
+            arr.shift();
+            return arr;
+        }
+        this.setState({
+            spelled: this.state.spelled.concat(this.state.unspelled[0]),
+            unspelled: shiftLetter([...this.state.unspelled]),
+        })
+        let times = this.state.combo + 1;
+        this.props.addCurrency(times);
         let banner = document.getElementById('banner');
         if (banner){
             banner.innerHTML = 'Good job!';
