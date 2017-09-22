@@ -36,4 +36,14 @@ User.destroy = (id, user_id) => {
     `, [id]);
 };
 
+//update currency
+User.updateCurrency = (user) => {
+    return db.one(`
+    UPDATE users SET
+    currency = $1
+    WHERE id = $2
+    RETURNING *
+    `, [user.currency, user.id])
+}
+
 module.exports = User;

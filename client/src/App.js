@@ -178,8 +178,18 @@ class App extends Component {
   addCurrency(times){
     this.setState({
       currency: this.state.currency + 1 * times
+    });
+    axios.put(`/user/addcoin`, {
+      currency: this.state.currency,
+      id: this.state.user.id,
     })
-  }
+    .then(res => {
+      console.log(res);
+    })
+    .catch(err => {
+      console.log(err);
+    })
+  };
 
   render() {
     if(this.state.redirect !== null) {

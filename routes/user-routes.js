@@ -4,6 +4,8 @@ const usersController = require('../controllers/users-controller');
 const authHelpers = require('../services/auth/auth-helpers');
 //user's dashboard
 userRoutes.get('/', authHelpers.loginRequired, usersController.index);
+//update currency
+userRoutes.put('/addcoin', authHelpers.loginRequired, usersController.updateCurrency);
 //update users info
 userRoutes.put('/:id', authHelpers.loginRequired, usersController.update);
 //delete user
