@@ -8,7 +8,7 @@ class Game extends Component {
         super();
         this.state = {
             newWordData: null,
-            unspelled: ['W', 'O', 'R', 'D', 'D', 'D', 'D'],
+            unspelled: [],
             spelled: [],
             // letterList: [ 'A','B','C','D','E','F','G','H','I','J','K','L','M','N','O','P','Q','R','S','T','U','V','W','X','Y','Z' ],
             HP: [1,1,1],
@@ -22,24 +22,25 @@ class Game extends Component {
         this.tryToSave = this.tryToSave.bind(this);
         this.wrongLetter = this.wrongLetter.bind(this);
         this.saveNewWord = this.saveNewWord.bind(this);
-        this.createBoxes = this.createBoxes.bind(this);
         this.changeDisplay = this.changeDisplay.bind(this);
         this.dudeJump = this.dudeJump.bind(this);
         this.deleteAnimation = this.deleteAnimation.bind(this);
+        this.collision = this.collision.bind(this);
         this.collisionDetect = this.collisionDetect.bind(this);
+        this.createBoxes = this.createBoxes.bind(this);
         this.createManyBoxes = this.createManyBoxes.bind(this);
     };
 
-    componentDidMount(){
+    componentWillMount(){
         this.getNewWord();
     }
 
     componentWillUnmount(){
-        console.log('unmount');
         this.setState({
             started: false
         })
-        clearInterval(this.myInterval);
+        clearInterval(this.boxInterval);
+        clearInterval(this.collisionInterval);
     }
 
     getNewWord(){
@@ -71,7 +72,7 @@ class Game extends Component {
         this.props.addCurrency(times);
         let banner = document.getElementById('banner');
         if (banner){
-            banner.innerHTML = 'Good job!';
+            banner.innerHTML = 'Keep going!';
             setTimeout(function(){
                 banner.innerHTML = ''
             }, 1000)
@@ -173,17 +174,17 @@ class Game extends Component {
     // };
 
     createBoxes(){
-            if (this.state.newWordData){
-                let letterList = this.state.newWordData[0].spell.toUpperCase().split('');
-                this.setState({
+        if (this.state.newWordData){
+            let letterList = this.state.newWordData[0].spell.toUpperCase().split('');
+            this.setState({
                 letters: this.state.letters.concat(letterList[Math.floor(Math.random()*letterList.length)]),
-                })
-            }else{
-                this.getNewWord()
-            }
+            })
+        }else{
+            this.getNewWord()
+        }
     }
     createManyBoxes(){
-        this.myInterval = setInterval(this.createBoxes,2000)
+        this.boxInterval = setInterval(this.createBoxes,2000)
     }
     changeDisplay(){
         this.setState({
@@ -201,7 +202,7 @@ class Game extends Component {
         })
     }
 
-    collisionDetect(){
+    collision(){
         let dude = document.getElementById('dude');
         let box = document.getElementsByClassName('box');
         let sky = document.getElementById('sky');
@@ -222,23 +223,14 @@ class Game extends Component {
         })
     }
 
+    collisionDetect(){
+        this.collisionInterval = setInterval(this.collision,1)
+    }
+
     render(){
         return(
             <div className = 'game-room'>
-                {/* <div className = 'word-box'>
-                    {this.state.spelled.length ? 
-                        [...this.state.spelled].map(letter =>{
-                            return <b>{letter}</b>
-                        })
-                        : ''}
-                    {this.state.unspelled ? 
-                        [...this.state.unspelled].map(letter => {
-                            return <small>{letter}</small>
-                        })
-                        : ''}
-                </div> */}
-                {/* {[...this.state.unspelled].length === 0 ? this.saveNewWord() : ''} */}
-                {/* <div className = 'test-btn' onClick = {this.getNewWord}>Get New Word</div> */}
+            {this.state.HP.length > 0 ? 
                 <GameStage  
                             unspelled = {this.state.unspelled} 
                             spelled = {this.state.spelled} 
@@ -259,6 +251,7 @@ class Game extends Component {
                             started = {this.state.started}
                             combo = {this.state.combo}
                             />
+                : <div className = 'lost-banner'><h2>Good job!</h2><h4>Combo: {this.state.combo}</h4></div>}
             </div>
         )
     }

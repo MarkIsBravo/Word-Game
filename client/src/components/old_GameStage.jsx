@@ -1,3 +1,5 @@
+//this component was created for testing purposes, not using it right now
+
 import React, { Component } from 'react';
 
 class GameStage extends Component {
