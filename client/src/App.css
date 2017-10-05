@@ -41,7 +41,7 @@ body{
 .home h1{
   padding: 10px;
   background-color: #F5A235;
-  border-style: dashed;
+  /* border-style: dashed; */
 }
 
 .home div{
@@ -52,7 +52,7 @@ body{
 }
 
 .login{
-  border-style: dashed;
+  /* border-style: dashed; */
   width: 240px;
   padding: 20px;
 }
@@ -61,7 +61,7 @@ body{
   height: 30px;
   width: 210px;
   background-color: #FFE364;
-  border: dotted black;
+  border: none;
   cursor: pointer;
 }
 
@@ -71,7 +71,7 @@ body{
 
 .register-link{
   padding: 10px;
-  border: 3px dashed black;
+  border: 3px black;
 }
 
 input{
@@ -107,13 +107,13 @@ input:hover{
   padding: 10px;
   width: 250px;
   background-color: #F5A235;
-  border: 3px dashed black;
+  border: 3px black;
 }
 .register button{
   height: 30px;
   width: 210px;
   background-color: #FFE364;
-  border: dotted black;
+  border: none;
 }
 .register button:hover{
   background-color: #D3CFBF;
@@ -196,11 +196,11 @@ input:hover{
 .user-profile .user-buttons div{
   width: 230px;
   padding: 5px 0;
-  border: dashed #F3DA78;
+  border: solid #F3DA78;
   cursor: pointer;
 }
 .user-profile .user-buttons div:hover{
-  border: dashed black;
+  border: solid black;
 }
 .user-profile form{
   padding: 40px 0;
@@ -210,12 +210,12 @@ input:hover{
   height: 30px;
   width: 210px;
   background-color: #F3DA78;
-  border: dotted #F3DA78;
+  /* border: dotted #F3DA78; */
   cursor: pointer;
   color: white;
 }
 .user-profile button:hover{
-  border: dotted black;
+  /* border: dotted black; */
 }
 
 .wordlist-container{
@@ -229,12 +229,12 @@ input:hover{
 .wordlist{
   display: flex;
   flex-direction: column;
-  width: 50%;
+  width: 30%;
 }
 
 .word-single{
   margin: 2px;
-  border: dotted black;
+  border: solid black;
 }
 
 .word-single .delete-btn{
