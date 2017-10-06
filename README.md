@@ -15,6 +15,7 @@ During this game, users could keep practicing the word spelling: getting familia
 ![](public/screenshots/2.png)
 ![](public/screenshots/3.png)
 ![](public/screenshots/4.png)
+![](public/screenshots/5.png)
 
 ## Technology Used
 * HTML5
