@@ -1,9 +1,11 @@
 {
-  "main.css": "static/css/main.4181e9c4.css",
-  "main.css.map": "static/css/main.4181e9c4.css.map",
-  "main.js": "static/js/main.f1bdb80f.js",
-  "main.js.map": "static/js/main.f1bdb80f.js.map",
+  "main.css": "static/css/main.d19cf2ac.css",
+  "main.css.map": "static/css/main.d19cf2ac.css.map",
+  "main.js": "static/js/main.ba2a67e4.js",
+  "main.js.map": "static/js/main.ba2a67e4.js.map",
+  "static/media/bottom.png": "static/media/bottom.6d4e9ad7.png",
   "static/media/box.jpg": "static/media/box.d306d1e7.jpg",
   "static/media/dude1.gif": "static/media/dude1.49471731.gif",
-  "static/media/skyline.png": "static/media/skyline.a5dd5e57.png"
+  "static/media/skyline.png": "static/media/skyline.a5dd5e57.png",
+  "static/media/top.png": "static/media/top.56ae4df5.png"
 }
