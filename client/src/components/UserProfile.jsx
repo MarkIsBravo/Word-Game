@@ -24,7 +24,9 @@ class UserProfile extends Component {
         <div className = 'user'>
           {this.props.currentUserId === this.props.user.id ?
             <form onSubmit = {this.props.editUser}>
+              <p className = 'profile-title'>Nickname:</p>
               <input type = 'text' name = 'nickname' placeholder = 'nickname' value = {this.state.nickname} onChange = {this.handleInputChange} />
+              <p className = 'profile-title'>Email: </p>
               <input type = 'text' name = 'email' placeholder = 'email' value = {this.state.email} onChange = {this.handleInputChange} />
               <button type = 'submit'>Submit</button>
             </form> 
@@ -34,9 +36,11 @@ class UserProfile extends Component {
               </div> }
         </div>
         <div className='user-buttons'>
-          <div className='edit-button' onClick={()=> {this.props.userSelectEdit(this.props.user.id)}}><p>Edit</p>
+          <div className='edit-button' onClick={()=> {this.props.userSelectEdit(this.props.user.id)}}>
+            Edit
           </div>
-          <div className='delete-button' onClick={()=> {this.props.deleteUser(this.props.user.id) }}><p>Delete</p>
+          <div className='delete-button' onClick={()=> {this.props.deleteUser(this.props.user.id) }}>
+            Delete
           </div>
         </div>
 
