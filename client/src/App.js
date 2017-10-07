@@ -8,7 +8,6 @@ import {
 import './App.css';
 
 import Header from './components/Header';
-import Footer from './components/Footer';
 import Home from './components/Home';
 import Register from './components/Register';
 import Dashboard from './components/Dashboard';
@@ -252,7 +251,6 @@ class App extends Component {
                                                                 addCurrency = {this.addCurrency}
                                                                 />} />
                 </main>
-                <Footer />
               </div>
             ) :
             <div className="App">
@@ -275,7 +273,6 @@ class App extends Component {
                                                             addCurrency = {this.addCurrency}
                                                             />} />
             </main>
-            <Footer />
           </div>
           }
         </Router>

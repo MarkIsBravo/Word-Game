@@ -57,18 +57,21 @@ class Dashboard extends Component {
             <div className = 'dashboard'>
                 {this.props.auth ? this.props.currentPage === 'dashboard' ? 
                 <div>
-                    <div className = 'decorations' style={{'z-index':"-1"}}>
-                        <div className = 'headerimg'/>
+                    <div className = 'decorations'>
+                        {/* <div className = 'headerimg'/> */}
                         <div className='footerimg'/>
                     </div>
                     <div className = 'dashboard-home'>
-                        <h4>Dashboard</h4> 
-                        <div className = 'user-btn' onClick = {() => this.props.setPage('game') & this.props.setContent('game')}>Game</div>
-                        <div className = 'user-btn' onClick = {() => this.props.setPage('profile') & this.props.setContent('profile')}>Profile</div>
-                        <div className = 'user-btn' onClick = {() => this.props.setPage('wordlist') & this.props.setContent('wordlist')}>Wordlist</div>
-                        <div className = 'user-btn' onClick = {() => this.props.setPage('characters') & this.props.setContent('characters')}>Characters(later)</div>
-                        <div className = 'user-btn' onClick = {() => this.props.setPage('store') & this.props.setContent('store')}>Store(later)</div>
-                        <div className = 'user-btn' onClick = {() => this.props.setPage('leaderboard') & this.props.setContent('leaderboard')}>Leaderboard(later)</div>
+                        <div className = 'user-btn game-btn' onClick = {() => this.props.setPage('game') & this.props.setContent('game')}>Game</div>
+                        <div className = 'user-btnlist'>
+                            <div className = 'user-btn wordlist-btn' onClick = {() => this.props.setPage('wordlist') & this.props.setContent('wordlist')}>Wordlist</div>
+                            <div className = 'user-btn profile-btn' onClick = {() => this.props.setPage('profile') & this.props.setContent('profile')}>Profile</div>
+                            <div className = 'user-btn characters-btn' onClick = {() => this.props.setPage('characters') & this.props.setContent('characters')}>Characters</div>
+                        </div>
+                        <div className = 'community-btnlist'>
+                            <div className = 'user-btn store-btn' onClick = {() => this.props.setPage('store') & this.props.setContent('store')}>Store</div>
+                            <div className = 'user-btn leaderboard-btn' onClick = {() => this.props.setPage('leaderboard') & this.props.setContent('leaderboard')}>Leaderboard</div>
+                        </div>
                     </div> 
                 </div> :
                 <div className = 'dashboard-expand'>
