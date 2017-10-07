@@ -1,26 +1,36 @@
+.App-alert{
+  height: 100vh;
+  width: 100vw;
+  background-color: #778CAC;
+  color: #FC9FB0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.App-alert h1{
+  display: inline-block;
+  width: 280px;
+  font-size: 100px;
+  font-family: 'Permanent Marker', cursive;
+}
+
+.App-alert .rotate-icon{
+  height: 200px;
+  width: 200px;
+  background-image: url('images/rotate.png');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+.App-alert h3{
+  font-family: 'Kumar One Outline', cursive;
+}
+
 .App {
   text-align: center;
-}
-
-.App-logo {
-  animation: App-logo-spin infinite 20s linear;
-  height: 80px;
-}
-
-.App-header {
-  background-color: #222;
-  height: 150px;
-  padding: 20px;
-  color: white;
-}
-
-.App-intro {
-  font-size: large;
-}
-
-@keyframes App-logo-spin {
-  from { transform: rotate(0deg); }
-  to { transform: rotate(360deg); }
 }
 
 body{
@@ -238,12 +248,32 @@ input:hover{
   justify-content: space-around;
 }
 
+.user{
+  background-color: #778CAC;
+  width: 360px;
+  height: 40vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-content: space-around;
+  align-items: center;
+}
+.user .profile-title{
+  display: inline-block;
+}
+.user .profile-content{
+  display: inline-block;
+  background-color: #FC9FB0;
+  width: 350px;
+  height: 40px;
+}
+
 .user-profile .user-buttons{
   display: flex;
 }
 
 .user-profile .user-buttons div{
-  width: 230px;
+  width: 160px;
   padding: 5px 0;
   border: solid #F3DA78;
   cursor: pointer;
@@ -253,7 +283,7 @@ input:hover{
 }
 .user-profile form{
   padding: 40px 0;
-  width: 250px;
+  width: 400px;
 }
 .user-profile button{
   height: 30px;
@@ -503,3 +533,15 @@ input:hover{
     display: none;
   }
 }
+/* 
+@media screen and (min-width: 320px) and (max-width: 767px) and (orientation: landscape) {
+  html {
+    transform: rotate(-90deg);
+    transform-origin: left top;
+    width: 100vh;
+    overflow-x: hidden;
+    position: absolute;
+    top: 100%;
+    left: 0;
+  }
+} */

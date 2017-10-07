@@ -24,6 +24,8 @@ class App extends Component {
       currentContent: 'dashboard',
       redirect: '/',
       currency: null,
+      width: 0,
+      height: 0,
     }
     this.handleLoginSubmit = this.handleLoginSubmit.bind(this);
     this.handleRegisterSubmit = this.handleRegisterSubmit.bind(this);
@@ -34,6 +36,23 @@ class App extends Component {
     this.setContent = this.setContent.bind(this);
     this.setPage = this.setPage.bind(this);
     this.addCurrency = this.addCurrency.bind(this);
+    this.updateWindowDimensions = this.updateWindowDimensions.bind(this);
+  }
+
+  componentDidMount() {
+    this.updateWindowDimensions();
+    window.addEventListener('resize', this.updateWindowDimensions);
+  }
+  
+  componentWillUnmount() {
+    window.removeEventListener('resize', this.updateWindowDimensions);
+  }
+  
+  updateWindowDimensions() {
+    this.setState({ 
+      width: window.innerWidth, 
+      height: window.innerHeight 
+    });
   }
 
   requireLogin(){
@@ -205,7 +224,38 @@ class App extends Component {
     } else {
       return (
         <Router>
-          <div className="App">
+          {this.state.height/this.state.width > 1.3 ? 
+            (this.state.width < 450 ?
+              <div className = 'App-alert'>
+                <h1>Word Hero</h1>
+                <div className = 'rotate-icon'/>
+                <h3>Please rotate your device</h3>
+              </div> 
+              :
+              <div className="App">
+                <Header user = {this.state.user} auth = {this.state.auth} logOut = {this.logOut} />
+                <main>
+                  <Route exact path = '/' render = {() => <Home handleLoginSubmit = {this.handleLoginSubmit}/>} />
+                  <Route exact path = '/register' render = {() => <Register handleRegisterSubmit = {this.handleRegisterSubmit} />} />
+                  <Route exact path = '/user' render = {() => <Dashboard 
+                                                                auth = {this.state.auth}
+                                                                user = {this.state.user}
+                                                                deleteUser = {this.deleteUser}
+                                                                userSelectEdit = {this.userSelectEdit}
+                                                                editUser = {this.editUser}
+                                                                setContent = {this.setContent}
+                                                                currentContent = {this.state.currentContent}
+                                                                setPage = {this.setPage}
+                                                                currentPage = {this.state.currentPage}
+                                                                currentUserId = {this.state.currentUserId}
+                                                                currency = {this.state.currency}
+                                                                addCurrency = {this.addCurrency}
+                                                                />} />
+                </main>
+                <Footer />
+              </div>
+            ) :
+            <div className="App">
             <Header user = {this.state.user} auth = {this.state.auth} logOut = {this.logOut} />
             <main>
               <Route exact path = '/' render = {() => <Home handleLoginSubmit = {this.handleLoginSubmit}/>} />
@@ -223,10 +273,11 @@ class App extends Component {
                                                             currentUserId = {this.state.currentUserId}
                                                             currency = {this.state.currency}
                                                             addCurrency = {this.addCurrency}
-                                                             />} />
+                                                            />} />
             </main>
             <Footer />
           </div>
+          }
         </Router>
       );
     }

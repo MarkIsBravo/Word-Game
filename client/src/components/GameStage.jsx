@@ -7,7 +7,7 @@ class GameStage extends Component {
     render(){
         return(
             <div>
-                <div className ='game-stage' onClickCapture = {this.props.dudeJump}>
+                <div className ='game-stage' onClickCapture = {() => this.props.dudeJump()}>
                     <div id = 'sky'>
                         <div className = 'game-header'>
                             <div className = 'hp-bar'>
