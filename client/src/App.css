@@ -479,13 +479,27 @@ input:hover{
 }
 
 .game-room{
-  height: 73vh;
+  height: 79vh;
 }
 
+.game-stage{
+  height: 79vh;
+}
 
-
-
-
+/* .jump-btn{
+  background-color: #F3DA78;
+  height: 10vh;
+  width: 10vh;
+  border-radius: 50%;
+  position: absolute;
+  bottom: 1vh;
+  left: 1vh;
+  font-size: 10px;
+  color: #778CAC;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+} */
 
 .letter-boxes{
   display: flex;
@@ -538,9 +552,12 @@ input:hover{
 }
 
 #ground{
-  height:50px;
+  height:14vh;
   width: 100%;
-  background-color: #9C651C;
+  background-color: #778CAC;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 @keyframes jump {
@@ -569,20 +586,26 @@ input:hover{
 
 .hp-bar{
   margin: 10px;
-  height: 315px;
-  width: 50px;
+  width: 10vw;
+  height: 20px;
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
+  justify-content: flex-start;
   align-items: center;
-  background: green;
-  border: 2px solid black;
+  /* background: #FF0000; */
+  /* border: 2px solid black; */
 }
 
 .hp-dot{
-  height: 100px;
-  width: 45px;
-  margin: 3px 0;
-  background-color: #FF0000;
+  width: 3vw;
+  height: 20px;
+  background: red;
+  background: -webkit-linear-gradient(top, white, red);
+  background: -moz-linear-gradient(top, white, red);
+  background: linear-gradient(to bottom, white, red);
+  box-sizing: border-box;
+  /* border: 2px solid black; */
+  border-radius: 10px;
 }
 
 .word-board{
@@ -594,42 +617,65 @@ input:hover{
   font-weight: 700;
 }
 
-.combo{
+.numbers{
   font-size: 20px;
-  width: 120px;
+  width: 150px;
+  height: 70px;
   display: flex;
   flex-direction: row;
   align-items: center;
-  justify-content: space-around;
+  justify-content: center;
 }
-.combo b{
+.numbers b{
   font-family: 'Permanent Marker', cursive;
   font-size: 35px;
+  color: #FC9FB0;
 }
 
 .currency{
   margin: 10px;
+  font-size: 20px;
 }
 
-/* .start-banner{
+.start-banner{
   position: absolute;
-  height: 100px;
+  height: 79vh;
   left: 0;
   top: 0;
   width: 100%;
-  background-color: green;
-} */
+  background-color: #F3DA78;
+  color: #778CAC;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.start-banner .game-instruction{
+  font-size: 20px;
+  width: 50%;
+  display: inline-block;
+}
+
+#banner{
+  display: inline-block;
+  background: none;
+  color: #FC9FB0;
+}
 
 .lost-banner{
   position: absolute;
-  height: 73vh;
+  height: 79vh;
   width: 100%;
   background-color: #F3DA78;
-  color: white;
+  color: #778CAC;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
+}
+.lost-banner h4{
+  margin: 0;
 }
 
 .leaderboard{

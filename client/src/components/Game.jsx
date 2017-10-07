@@ -17,6 +17,7 @@ class Game extends Component {
             started: false,
             isMounted: true,
             combo: 0,
+            miles: 0,
         }
         this.getNewWord = this.getNewWord.bind(this);
         this.tryToSave = this.tryToSave.bind(this);
@@ -29,18 +30,20 @@ class Game extends Component {
         this.collisionDetect = this.collisionDetect.bind(this);
         this.createBoxes = this.createBoxes.bind(this);
         this.createManyBoxes = this.createManyBoxes.bind(this);
+        this.addMiles = this.addMiles.bind(this);
     };
 
-    componentWillMount(){
-        this.getNewWord();
-    }
+    // componentWillMount(){
+    //     this.getNewWord();
+    // }
 
     componentWillUnmount(){
         this.setState({
             started: false
         })
-        clearInterval(this.boxInterval);
-        clearInterval(this.collisionInterval);
+    //     clearInterval(this.boxInterval);
+    //     clearInterval(this.collisionInterval);
+    //     clearInterval(this.milesInterval);
     }
 
     getNewWord(){
@@ -174,17 +177,27 @@ class Game extends Component {
     // };
 
     createBoxes(){
-        if (this.state.newWordData){
-            let letterList = this.state.newWordData[0].spell.toUpperCase().split('');
-            this.setState({
-                letters: this.state.letters.concat(letterList[Math.floor(Math.random()*letterList.length)]),
-            })
-        }else{
-            this.getNewWord()
-        }
+        let randomNum = Math.random() * 2000 + 2000;
+        setTimeout(
+            () => {
+                if (this.state.newWordData){
+                    let letterList = this.state.newWordData[0].spell.toUpperCase().split('');
+                    this.setState({
+                        letters: this.state.letters.concat(letterList[Math.floor(Math.random()*letterList.length)]),
+                    })
+                }else{
+                    this.getNewWord()
+                }
+            },randomNum)
     }
     createManyBoxes(){
-        this.boxInterval = setInterval(this.createBoxes,2000)
+        this.boxInterval = setInterval(this.createBoxes,4000);
+        this.milesInterval = setInterval(this.addMiles, 500);
+    }
+    addMiles(){
+        this.setState({
+            miles: this.state.miles + 1
+        })
     }
     changeDisplay(){
         this.setState({
@@ -250,8 +263,18 @@ class Game extends Component {
                             letters = {this.state.letters}
                             started = {this.state.started}
                             combo = {this.state.combo}
+                            miles = {this.state.miles}
+                            getNewWord = {this.getNewWord}
+                            boxInterval = {this.boxInterval}
+                            collisionInterval = {this.collisionInterval}
+                            milesInterval = {this.milesInterval}
                             />
-                : <div className = 'lost-banner'><h2>Good job!</h2><h4>Combo: {this.state.combo}</h4></div>}
+                : 
+                <div className = 'lost-banner'>
+                    <h2>Good job!</h2>
+                    <h4>Combo: {this.state.combo}</h4>
+                    <h4>Your Score: {this.state.miles} mi</h4>
+                </div>}
             </div>
         )
     }
